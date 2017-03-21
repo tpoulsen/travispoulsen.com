@@ -9,7 +9,8 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   height: 100vh;
   width: 100vw;
   color: #FFFFFF;
@@ -21,37 +22,34 @@ a {
   color: #FFFFFF;
 }
 
-ul {
-  list-style: none;
-}
-
 .content {
   display: flex;
-  flex-direction: row;
-  flex: 1;
-}
-
-.main-nav {
-  flex-direction: column;
-  //background-color: #D5D5D5;
+  flex-flow: row wrap;
+  justify-content: space-around;
   padding: 3em;
   flex: 1;
 }
 
-.term {
-  color: #FED325;
-}
-
-.content-left {
-  flex: 1;
+.card {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.25);
+  flex: 1 1 33.33%;
+  flex-direction: column;
+  margin: 1em;
+  background-color: rgba(100, 100, 100, 0.50);
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
+  width: 250px;
+  height: 250px;
 }
 
-.content-right {
-  display: flex;
-  flex: 2;
+.card-header {
+  background-color: rgba(90, 55, 55, 0.5);
+  padding: 0.5em;
+}
+
+.card-body {
+  padding: 1em;
+  min-height: 3em;
 }
 
 .footer {
