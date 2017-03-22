@@ -11,8 +11,6 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
   color: #FFFFFF;
   font-family: "Fira Code", monospace;
 }
@@ -48,8 +46,23 @@ a {
 }
 
 .card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 1em;
   min-height: 3em;
+}
+
+.card-footer {
+  display: flex;
+  flex-flow: row wrap;
+  font-style: italic;
+  justify-content: flex-start;
+}
+
+.card-footer div {
+  margin-right: 0.5em;
 }
 
 .footer {
