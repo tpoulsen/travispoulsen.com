@@ -1,4 +1,11 @@
 - link:
+    href: /blog
+    desc: blog
+  bodyText: Personal blog; primarily about λ programming.
+  tags:
+    - Org
+    - Hakyll
+- link:
     href: cardinalPew.html
     desc: cardinalPew
   bodyText: An Asteroids inspired, endless space shooter.

@@ -2,17 +2,17 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes       #-}
 
-module Card (
-    Link(..)
-  , Tags
-  , Card(..)
-  , readCards
-  ) where
+module Card where
 
-import           Data.Text    (Text, intercalate)
-import           Data.Yaml    (FromJSON, ToJSON, decodeFile)
+import           Data.ByteString               (ByteString)
+import           Data.Maybe                    (Maybe)
+import           Data.Text                     (Text, intercalate)
+import           Data.Yaml                     (FromJSON, ToJSON, decode)
+import           Filesystem.Path.CurrentOS     hiding (decode)
 import           GHC.Generics
+import           Prelude                       hiding (FilePath)
 import           Text.InterpolatedString.Perl6 (q, qc)
+import           Types
 
 data Link = Link
   { href :: Text
@@ -31,15 +31,14 @@ data Card = Card
 instance ToJSON Card
 instance FromJSON Card
 
-readCards :: FilePath -> IO (Maybe [Card])
-readCards = decodeFile
+readCards :: ByteString -> Maybe [Card]
+readCards = decode
 
-genCardDiv :: Card -> Text
-genCardDiv (Card link bodyText tags) =
-  cardTemplate link bodyText tags
+genCardDiv :: Maybe Card -> Maybe Template
+genCardDiv c = c >>= pure . cardTemplate
 
-cardTemplate :: Link -> Text -> Tags -> Template
-cardTemplate (Link href desc) bodyText tags = [qc|
+cardTemplate :: Card -> Template
+cardTemplate (Card (Link href desc) bodyText tags) = [qc|
 <div class="card">
   <div class="card-header">
     <a class="main-nav-link" href="{href}"><h3>{desc}</h3></a>
@@ -49,7 +48,7 @@ cardTemplate (Link href desc) bodyText tags = [qc|
       {bodyText}
     </div>
     <div class="card-footer">
-      {dotJoin . map wrapTag $ tags}
+      {dotJoin . Prelude.map wrapTag $ tags}
     </div>
   </div>
 </div>
