@@ -1,1 +1,3 @@
 ./blog
+/gen-site/.cabal-sandbox/*
+/gen-site/.stack-work/*
