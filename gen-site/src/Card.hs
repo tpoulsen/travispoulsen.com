@@ -1,4 +1,3 @@
-{-# LANGUAGE DeriveGeneric     #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes       #-}
 
@@ -7,29 +6,11 @@ module Card where
 import           Data.ByteString               (ByteString)
 import           Data.Maybe                    (Maybe)
 import           Data.Text                     (Text, intercalate)
-import           Data.Yaml                     (FromJSON, ToJSON, decode)
+import           Data.Yaml                     (decode)
 import           Filesystem.Path.CurrentOS     hiding (decode)
-import           GHC.Generics
 import           Prelude                       hiding (FilePath)
 import           Text.InterpolatedString.Perl6 (q, qc)
 import           Types
-
-data Link = Link
-  { href :: Text
-  , desc :: Text
-  } deriving (Generic, Show)
-instance ToJSON Link
-instance FromJSON Link
-
-type Template = Text
-type Tags = [Text]
-data Card = Card
-  { link     :: Link
-  , bodyText :: Text
-  , tags     :: Tags
-  } deriving (Generic, Show)
-instance ToJSON Card
-instance FromJSON Card
 
 readCards :: ByteString -> Maybe [Card]
 readCards = decode

@@ -9,7 +9,7 @@ import           Filesystem.Path.CurrentOS
 import           Prelude                   hiding (FilePath)
 import           System.Environment        (getArgs)
 import           Turtle
-import           Types                     (OSFilePath)
+import           Types                     (OSFilePath, Template)
 
 parser :: Parser (OSFilePath, OSFilePath)
 parser = (,) <$> optPath "cardYaml" 'f' "Yaml file with card data"
@@ -22,6 +22,7 @@ main = do
   let cards = readCards $ encodeUtf8 rawCards
   let cardDivs = mapM genCardDiv . sequence $ cards
   writeOutput output cardDivs
+  echo "Done :)"
 
 writeOutput :: OSFilePath -> Maybe [Template] -> IO ()
 writeOutput out cards =
