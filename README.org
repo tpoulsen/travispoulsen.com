@@ -1,0 +1,45 @@
+* https://travispoulsen.com Landing Page
+  This repository contains the html, css, and a site generator for my static landing page.
+
+** gen-site
+  A site generator for the landing page.
+  
+  It reads a YAML file containing a list of cards to display on the page and generates a HTML file including the cards.
+
+  Can be installed with =stack install= in the =gen-site= directory.
+
+*** About
+    #+BEGIN_SRC sh
+      $ gen-site
+      Gen Site
+
+      Usage: gen-site (-f|--cardYaml CARDYAML) (-o|--output OUTPUT)
+
+      Available options:
+      -h,--help                Show this help text
+      -f,--cardYaml CARDYAML   Yaml file with card data
+      -o,--output OUTPUT       Filepath for output html
+    #+END_SRC
+
+*** Example YAML
+    (Taken from *cards.yaml*.)
+    #+BEGIN_SRC yaml
+      - link:
+          href: /blog
+          desc: /tmp/blog
+        bodyText: Personal blog; primarily about λ programming.
+        tags:
+          - Programming
+      - link:
+          href: /cardinalPew.html
+          desc: cardinalPew
+        bodyText: >
+          An asteroids inspired space shooter.
+          <br/>
+          Written over the course of a week in 2014 to experiment with game development and functional reactive programming.
+          <br/>
+          Includes custom collision detection and particle effects.
+        tags:
+          - Games
+          - Elm
+    #+END_SRC
