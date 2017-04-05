@@ -8,6 +8,7 @@ import           Data.Text.Encoding
 import           Filesystem.Path.CurrentOS
 import           Prelude                   hiding (FilePath)
 import           System.Environment        (getArgs)
+import           Template                  (siteTemplate)
 import           Turtle
 import           Types                     (OSFilePath, Template)
 
@@ -28,6 +29,6 @@ writeOutput :: OSFilePath -> Maybe [Template] -> IO ()
 writeOutput out cards =
   case cards of
     Just html ->
-      writeTextFile out . T.concat $ html
+      writeTextFile out . siteTemplate . T.concat $ html
     Nothing ->
       echo "No cards present"
