@@ -1,14 +1,48 @@
 - link:
     href: /blog
-    desc: blog
+    desc: /tmp/blog
   bodyText: Personal blog; primarily about λ programming.
   tags:
-    - Org
-    - Hakyll
+    - Programming
 - link:
-    href: cardinalPew.html
+    href: /cardinalPew.html
     desc: cardinalPew
-  bodyText: An Asteroids inspired, endless space shooter.
+  bodyText: >
+    An asteroids inspired space shooter.
+    <br/>
+    Written over the course of a week in 2014 to experiment with game development and functional reactive programming.
+    <br/>
+    Includes custom collision detection and particle effects.
   tags:
     - Games
     - Elm
+- link:
+    href: https://github.com/tpoulsen/focus
+    desc: focus
+  bodyText: >
+    An Elixir library for functional lenses.
+    <br/>
+    Available on <a href="https://hex.pm/packages/focus">Hex</a>.
+  tags:
+    - Elixir
+- link:
+    href: https://github.com/tpoulsen/collision
+    desc: collision
+  bodyText: >
+    An Elixir library for collision detection of two-dimensional polygons.
+    <br/>
+    Available on <a href="https://hex.pm/packages/collision">Hex</a>.
+    <br/>
+    A port of the collision detection library written for <b>cardinalPew</b>.
+  tags:
+    - Elixir
+- link:
+    href: https://github.com/tpoulsen/generate-component
+    desc: generate-component
+  bodyText: >
+    A React and React Native component generator.
+    <br/>
+    After installation, <em>generate-component</em> can generate stateless components as well as redux connected components.
+  tags:
+    - Haskell
+    - React
